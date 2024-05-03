@@ -13,3 +13,6 @@
 [submodule "contracts/lib/murky"]
 	path = contracts/lib/murky
 	url = https://github.com/dmfxyz/murky
+[submodule "contracts/lib/openzeppelin-contracts-upgradeable"]
+	path = contracts/lib/openzeppelin-contracts-upgradeable
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable

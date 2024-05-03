@@ -68,6 +68,9 @@ function Navbar() {
               </NavbarLink>
             </li>
             <li className="flex">
+              <NavbarLink href="/create-campaign">Create Campaign</NavbarLink>
+            </li>
+            <li className="flex">
               <NavbarLink href="/#get-started">Get Started</NavbarLink>
             </li>
             <li className="flex">

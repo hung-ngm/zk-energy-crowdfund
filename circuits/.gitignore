@@ -1,0 +1,10 @@
+/node_modules
+
+GreenEnergyProjectVerifier_js/
+*.sol
+*_verification_key.json
+*.zkey
+*.r1cs
+*.sym
+
+*.ptau

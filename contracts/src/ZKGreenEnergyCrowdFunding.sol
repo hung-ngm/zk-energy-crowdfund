@@ -13,8 +13,9 @@ interface IVerifier {
         uint256[2] memory a, 
         uint256[2][2] memory b, 
         uint256[2] memory c, 
-        uint256[3] memory input
+        uint256[2] memory input
     ) external view returns (bool);
+
 }
 
 
@@ -621,7 +622,7 @@ contract ZKGreenEnergyCrowdFunding is Initializable, ReentrancyGuardUpgradeable,
         uint256[2] memory a, 
         uint256[2][2] memory b, 
         uint256[2] memory c, 
-        uint256[3] memory input 
+        uint256[2] memory input 
     ) external onlyRecipientGuard() returns (bool) {
         bool isVerified = IVerifier(_verifierContractAddress).verifyProof(a, b, c, input);
         _isProjectVerified = isVerified;

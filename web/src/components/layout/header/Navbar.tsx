@@ -71,6 +71,9 @@ function Navbar() {
               <NavbarLink href="/#get-started">Get Started</NavbarLink>
             </li>
             <li className="flex">
+              <NavbarLink href="/create-campaign">Create Campaign</NavbarLink>
+            </li>
+            <li className="flex">
               <NavigationMenu.Root className="relative">
                 <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
                   <NavigationMenu.Item>

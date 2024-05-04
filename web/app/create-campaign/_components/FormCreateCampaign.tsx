@@ -16,27 +16,39 @@ const GAS_COST = 0.0001;
 
 const initFields = {
   name: '',
-  goal: '',
+  minGoal: 0,
+  maxGoal: 0,
+  minContribution: 0,
+  maxContribution: 0,
   twitterHandle: '',
-  coffeeCount: 1,
   message: '',
   description: '',
+  holdOff: 0,
+  duration: 0,
+  token: '',
+  recipient: ''
 };
 
 type Fields = {
   name: string;
-  goal: string;
+  minGoal: number,
+  maxGoal: number,
+  minContribution: number,
+  maxContribution: number,
   twitterHandle: string;
-  coffeeCount: number;
   description: string;
   message: string;
+  holdOff: number;
+  duration: number;
+  token: string;
+  recipient: string
 };
 
-type FormBuyCoffeeProps = {
+type FormCreateCampaignProps = {
   refetchMemos: ReturnType<typeof useOnchainCoffeeMemos>['refetchMemos'];
 };
 
-function FormCreateCampaign({ refetchMemos }: FormBuyCoffeeProps) {
+function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
   const contract = useBuyMeACoffeeContract();
 
   const { fields, setField, resetFields } = useFields<Fields>(initFields);
@@ -48,10 +60,10 @@ function FormCreateCampaign({ refetchMemos }: FormBuyCoffeeProps) {
 
   const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
     useSmartContractForms({
-      gasFee: parseEther(String(GAS_COST * fields.coffeeCount)),
+      gasFee: parseEther(String(GAS_COST)),
       contract,
-      name: 'buyCoffee',
-      arguments: [fields.coffeeCount, fields.name, fields.twitterHandle, fields.message],
+      name: 'deployCampaign',
+      arguments: [fields.recipient, fields.minGoal, fields.maxGoal, fields.minContribution, fields.maxContribution, fields.holdOff, fields.duration, "0x7C65d5C1497472B5Dd0434D681FBe619935D1fF4", 85, 4,"0x56C1a83A4682837528b04292AF27ef648aC6dDab"],
       enableSubmit: fields.name !== '' && fields.message !== '',
       reset,
     });
@@ -60,7 +72,6 @@ function FormCreateCampaign({ refetchMemos }: FormBuyCoffeeProps) {
     return (
       <TransactionSteps
         transactionStep={transactionState}
-        coffeeCount={fields.coffeeCount}
         resetContractForms={resetContractForms}
         gasCost={GAS_COST}
       />
@@ -87,12 +98,24 @@ function FormCreateCampaign({ refetchMemos }: FormBuyCoffeeProps) {
           </div>
 
           <div className="mb-5">
-            <Label htmlFor="name">Goal</Label>
+            <Label htmlFor="name">Minimum Goal</Label>
             <InputText
               id="goal"
-              placeholder="Goal"
+              placeholder="Minimum Goal"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-              onChange={(evt) => setField('goal', evt.target.value)}
+              onChange={(evt) => setField('minGoal', Number(evt.target.value))}
+              disabled={!disabled}
+              required
+            />
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="name">Maximum Goal</Label>
+            <InputText
+              id="goal"
+              placeholder="Maximum Goal"
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('maxGoal', Number(evt.target.value))}
               disabled={!disabled}
               required
             />
@@ -127,9 +150,62 @@ function FormCreateCampaign({ refetchMemos }: FormBuyCoffeeProps) {
             <Label htmlFor="message">Message</Label>
             <TextArea
               id="message"
-              placeholder="Say something"
+              placeholder="Message"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('message', evt.target.value)}
+              disabled={!disabled}
+              required
+            />
+
+          <div className="mb-5">
+            <Label htmlFor="message">Time till start (seconds)</Label>
+              <InputText
+                id="holdOff"
+                placeholder="holdOff"
+                // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                onChange={(evt) => setField('holdOff', Number(evt.target.value))}
+                disabled={!disabled}
+                required
+              />
+          </div>
+
+          <div className="mb-5">
+              <Label htmlFor="duration">Duration</Label>
+              <select
+                id="duration"
+                onChange={(evt) => setField('duration', Number(evt.target.value))}
+                disabled={!disabled}
+                required
+              >
+                <option value={0}>Select duration</option>
+                <option value={1}>1 hour</option>
+                <option value={24}>1 day</option>
+                <option value={168}>1 week</option>
+                <option value={720}>1 month</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="token">Token</Label>
+            <select
+              id="token"
+              onChange={(evt) => setField('token', evt.target.value)}
+              disabled={!disabled}
+              required
+            >
+              <option value="">Select token</option>
+              <option value="USDC">USDC</option>
+              <option value="USDT">USDT</option>
+            </select>
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="recipient">Recipient</Label>
+            <InputText
+              id="recipient"
+              placeholder="Contract address"
+              onChange={(evt) => setField('recipient', evt.target.value)}
               disabled={!disabled}
               required
             />
@@ -140,8 +216,7 @@ function FormCreateCampaign({ refetchMemos }: FormBuyCoffeeProps) {
           <Button
             buttonContent={
               <>
-                Send {fields.coffeeCount} coffee{fields.coffeeCount > 1 ? 's' : null} for{' '}
-                {String((GAS_COST * fields.coffeeCount).toFixed(4))} ETH
+                Create campaign
               </>
             }
             type="submit"

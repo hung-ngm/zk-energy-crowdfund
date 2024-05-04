@@ -10,6 +10,7 @@ const DropdownMenuContentStyle = {
 
 export function AccountDropdown() {
   const { address } = useAccount();
+  console.log(address)
 
   return (
     <DropdownMenu.Root>

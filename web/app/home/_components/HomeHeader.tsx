@@ -1,10 +1,6 @@
 import { clsx } from 'clsx';
-import CodeBlock from '@/components/code-block/CodeBlock';
 import Header from '@/components/layout/header/Header';
 import styles from './Home.module.css';
-
-const codeStep1 = `\`\`\`bash
-$ npx @coinbase/build-onchain-apps@latest create`;
 
 export default function HomeHeader() {
   return (
@@ -13,20 +9,15 @@ export default function HomeHeader() {
       <Header />
       <div className="flex flex-col items-center justify-center">
         <h1 className={clsx(styles.HomeHeaderHeadline, 'font-robotoMono')}>
-          BUILD
+          ZK
           <br />
-          ONCHAIN
-          <br />
-          APPS
+          ENERGY
+          <br/>
+          CROWDFUND
         </h1>
         <p className={styles.HomeHeaderParagraph}>
-          Accelerate your Onchain creativity with
-          <br />
-          Build Onchain Apps Template.
+          For a greener future.
         </p>
-        <div className={styles.HomeHeaderCta}>
-          <CodeBlock code={codeStep1} />
-        </div>
       </div>
       <div className={styles.HomeHeaderWaves}>
         <div className={styles.homeBoatContainer}>

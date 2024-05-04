@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
+import FormCampaignDetails from '../_components/FormCampaignDetails';
 import useCampaignEndsAt from '../_hooks/useCampaignEndsAt';
 import useCampaignGoalMax from '../_hooks/useCampaignGoalMax';
 
@@ -37,6 +38,7 @@ export default function CampaginDetailsPage({ params }: { params: { id: string }
       <Header />
       <Main>
         <div />
+        <FormCampaignDetails address={address as `0x${string}`} />
       </Main>
       <Footer />
     </>

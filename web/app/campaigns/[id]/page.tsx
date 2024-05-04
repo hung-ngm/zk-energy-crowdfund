@@ -4,18 +4,21 @@ import { useEffect, useState } from 'react';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
-import useCampaignProxies from './_hooks/useCampaignProxies';
+import useCampaignEndsAt from '../_hooks/useCampaignEndsAt';
 
 /**
  * Use the page component to wrap the components
  * that you want to render on the page.
  */
-export default function CampaginsPage() {
+export default function CampaginDetailsPage({ params }: { params: { id: string } }) {
   const [isMounted, setIsMounted] = useState(false);
 
-  const { campaignProxies } = useCampaignProxies();
+  const address = params.id;
+  console.log(address);
 
-  console.log(campaignProxies);
+  const { endsAt } = useCampaignEndsAt(address as `0x${string}`);
+  console.log(endsAt);
+  
 
   useEffect(() => {
     setIsMounted(true);

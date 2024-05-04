@@ -1,4 +1,4 @@
-[
+const abi = [
   {
     "type": "constructor",
     "inputs": [
@@ -334,4 +334,6 @@
       }
     ]
   }
-]
+] as const;
+
+export default abi;

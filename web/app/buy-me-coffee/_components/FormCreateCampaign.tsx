@@ -36,6 +36,8 @@ type FormCreateCampaignProps = {
 function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
   const contract = useBuyMeACoffeeContract();
 
+  console.log("contract", contract);
+
   const { fields, setField, resetFields } = useFields<Fields>(initFields);
 
   const reset = useCallback(async () => {
@@ -54,6 +56,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
     });
 
   if (transactionState !== null) {
+    console.log("transactionState", transactionState);
     return (
       <TransactionSteps
         transactionStep={transactionState}
@@ -63,6 +66,8 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
       />
     );
   }
+
+  
 
   return (
     <>

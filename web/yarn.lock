@@ -1453,16 +1453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
-  version: 7.24.5
-  resolution: "@babel/runtime@npm:7.24.5"
-  dependencies:
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: 10c0/05730e43e8ba6550eae9fd4fb5e7d9d3cb91140379425abcb2a1ff9cebad518a280d82c4c4b0f57ada26a863106ac54a748d90c775790c0e2cd0ddd85ccdf346
-  languageName: node
-  linkType: hard
-
-"@babel/runtime@npm:^7.20.13":
+"@babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.24.5
   resolution: "@babel/runtime@npm:7.24.5"
   dependencies:
@@ -2604,6 +2595,13 @@ __metadata:
     "@metamask/utils": "npm:^8.3.0"
     fast-safe-stringify: "npm:^2.0.6"
   checksum: 10c0/512a312fa9962dbb0d0e165ffb17a1e65ade51148f8fd360846a7629269d35425388c4e08a8521177a412e8c2161cd04f8673959d65f4c5e1bb3ef258993b848
+  languageName: node
+  linkType: hard
+
+"@metamask/safe-event-emitter@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@metamask/safe-event-emitter@npm:2.0.0"
+  checksum: 10c0/a86b91f909834dc14de7eadd38b22d4975f6529001d265cd0f5c894351f69f39447f1ef41b690b9849c86dd2a25a39515ef5f316545d36aea7b3fc50ee930933
   languageName: node
   linkType: hard
 
@@ -7179,15 +7177,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"copy-to-clipboard@npm:^3.3.1":
-  version: 3.3.3
-  resolution: "copy-to-clipboard@npm:3.3.3"
-  dependencies:
-    toggle-selection: "npm:^1.0.6"
-  checksum: 10c0/3ebf5e8ee00601f8c440b83ec08d838e8eabb068c1fae94a9cda6b42f288f7e1b552f3463635f419af44bf7675afc8d0390d30876cf5c2d5d35f86d9c56a3e5f
-  languageName: node
-  linkType: hard
-
 "core-js-compat@npm:^3.31.0, core-js-compat@npm:^3.36.1":
   version: 3.37.0
   resolution: "core-js-compat@npm:3.37.0"
@@ -8739,7 +8728,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eth-rpc-errors@npm:^4.0.3":
+"eth-rpc-errors@npm:^4.0.2, eth-rpc-errors@npm:^4.0.3":
   version: 4.0.3
   resolution: "eth-rpc-errors@npm:4.0.3"
   dependencies:
@@ -11324,6 +11313,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-rpc-engine@npm:^6.1.0":
+  version: 6.1.0
+  resolution: "json-rpc-engine@npm:6.1.0"
+  dependencies:
+    "@metamask/safe-event-emitter": "npm:^2.0.0"
+    eth-rpc-errors: "npm:^4.0.2"
+  checksum: 10c0/29c480f88152b1987ab0f58f9242ee163d5a7e95cd0d8ae876c08b21657022b82f6008f5eecd048842fb7f6fc3b4e364fde99ca620458772b6abd1d2c1e020d5
+  languageName: node
+  linkType: hard
+
 "json-schema-traverse@npm:^0.4.1":
   version: 0.4.1
   resolution: "json-schema-traverse@npm:0.4.1"
@@ -13486,14 +13485,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"preact@npm:^10.16.0":
-  version: 10.21.0
-  resolution: "preact@npm:10.21.0"
-  checksum: 10c0/1f3cfcb5ca83b780b53593bcb917ae2e8d10a37405c32fb6774be1b5f1f3167d2156bd22c058627388330acc54da35fe8d4bbe7d38ae567a10e5d8fd943a1a06
-  languageName: node
-  linkType: hard
-
-"preact@npm:^10.6.3":
+"preact@npm:^10.16.0, preact@npm:^10.6.3":
   version: 10.21.0
   resolution: "preact@npm:10.21.0"
   checksum: 10c0/1f3cfcb5ca83b780b53593bcb917ae2e8d10a37405c32fb6774be1b5f1f3167d2156bd22c058627388330acc54da35fe8d4bbe7d38ae567a10e5d8fd943a1a06
@@ -17650,6 +17642,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
     jest-extended: "npm:^4.0.2"
+    json-rpc-engine: "npm:^6.1.0"
     net: "npm:^1.0.2"
     next: "npm:13.5.6"
     next-auth: "npm:^4.24.7"

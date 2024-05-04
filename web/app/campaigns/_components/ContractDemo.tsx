@@ -50,20 +50,10 @@ export default function CampaignsContractDemo() {
           'bg-boat-color-palette-backgroundalternate p-10',
         ])}
       >
+        <br/>
         <h2 className="mb-5 w-fit text-2xl font-semibold text-white">All campaigns</h2>
-
         {campaigns?.length > 0 && <Campaigns campaigns={campaigns} />}
       </section>
-      <aside>
-        <div
-          className={clsx([
-            'mt-10 rounded-lg border border-solid border-boat-color-palette-line',
-            'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
-          ])}
-        >
-          {/* <FormCreateCampaign refetchMemos={refetchMemos} /> */}
-        </div>
-      </aside>
     </div>
   );
 }

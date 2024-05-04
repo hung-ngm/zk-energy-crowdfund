@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
 import FormCampaignDetails from '../_components/FormCampaignDetails';
@@ -47,7 +46,6 @@ export default function CampaginDetailsPage({ params }: { params: { id: string }
           refetchTotalSupply={refetchTotalSupply}
         />
       </Main>
-      <Footer />
     </>
   );
 }

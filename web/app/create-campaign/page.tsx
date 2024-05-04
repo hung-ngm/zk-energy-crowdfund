@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from "next-auth/react"
-import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
 import BuyMeCoffeeContractDemo from './_components/ContractDemo';
@@ -32,7 +31,6 @@ export default function CreateCampaign() {
           <p>You need to verify to view this page</p>
         )}
       </Main>
-      <Footer />
     </>
   );
 }

@@ -5,6 +5,8 @@ import Banner from '@/components/layout/banner/banner';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
+import BuyMeCoffeeContractDemo from './_components/ContractDemo';
+import Guide from './_components/Guide';
 
 /**
  * Use the page component to wrap the components
@@ -26,9 +28,9 @@ export default function BuyMeCoffeePage() {
     <>
       <Header />
       <Main>
-        <Banner pageName="Create Campaign" pageUrl="create-campaign" />
-
-
+      <Banner pageName="Create Campaign" pageUrl="create-campaign" />
+        <BuyMeCoffeeContractDemo />
+        <Guide />
       </Main>
       <Footer />
     </>

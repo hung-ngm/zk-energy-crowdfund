@@ -1,5 +1,4 @@
 import { CheckIcon } from '@radix-ui/react-icons';
-import { A } from '@/components/layout/guide';
 
 function ListItem({ children }: { children: React.ReactNode }) {
   return (

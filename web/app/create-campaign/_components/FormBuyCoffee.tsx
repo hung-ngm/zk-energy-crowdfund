@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import clsx from 'clsx';
 import { parseEther } from 'viem';
 import Button from '@/components/Button/Button';
 import { useBuyMeACoffeeContract } from '../_contracts/useBuyMeACoffeeContract';
@@ -13,19 +12,23 @@ import TransactionSteps from './TransactionSteps';
 import useSmartContractForms from './useSmartContractForms';
 
 const GAS_COST = 0.0001;
-const COFFEE_COUNT = [1, 2, 3, 4];
+
 
 const initFields = {
   name: '',
+  goal: '',
   twitterHandle: '',
-  message: '',
   coffeeCount: 1,
+  message: '',
+  description: '',
 };
 
 type Fields = {
   name: string;
+  goal: string;
   twitterHandle: string;
   coffeeCount: number;
+  description: string;
   message: string;
 };
 
@@ -67,33 +70,9 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
   return (
     <>
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
-        Buy Me a Coffee!
+        Create Campaign
       </h2>
       <form onSubmit={onSubmitTransaction} className="w-full">
-        <div className="my-4 items-center lg:flex lg:gap-4">
-          <div className="text-center text-4xl lg:text-left">☕</div>
-          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
-          <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
-            {COFFEE_COUNT.map((count) => (
-              <button
-                key={`num-coffee-btn-${count}`}
-                type="button"
-                className={clsx(
-                  `${
-                    fields.coffeeCount === count
-                      ? 'bg-gradient-2'
-                      : 'border border-boat-color-orange'
-                  } block h-[40px] w-full rounded lg:w-[40px]`,
-                )}
-                // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-                onClick={() => setField('coffeeCount', count)}
-              >
-                {count}
-              </button>
-            ))}
-          </div>
-        </div>
-
         <div>
           <div className="mb-5">
             <Label htmlFor="name">Name</Label>
@@ -102,7 +81,31 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
               placeholder="Name"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('name', evt.target.value)}
-              disabled={disabled}
+              disabled={!disabled}
+              required
+            />
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="name">Goal</Label>
+            <InputText
+              id="goal"
+              placeholder="Goal"
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('goal', evt.target.value)}
+              disabled={!disabled}
+              required
+            />
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="name">Description</Label>
+            <InputText
+              id="description"
+              placeholder="Description"
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('description', evt.target.value)}
+              disabled={!disabled}
               required
             />
           </div>
@@ -116,7 +119,7 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
               onChange={(evt) => {
                 setField('twitterHandle', evt.target.value);
               }}
-              disabled={disabled}
+              disabled={!disabled}
             />
           </div>
 
@@ -127,7 +130,7 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
               placeholder="Say something"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('message', evt.target.value)}
-              disabled={disabled}
+              disabled={!disabled}
               required
             />
           </div>
@@ -142,7 +145,7 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
               </>
             }
             type="submit"
-            disabled={disabled}
+            disabled={!disabled}
           />
         </div>
       </form>

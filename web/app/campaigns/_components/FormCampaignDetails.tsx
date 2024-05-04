@@ -56,9 +56,9 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
     reset,
   })
 
-  const names = ['bonjour', 'xin chao', 'ciao', 'hello', 'comment ca va'];
-  const description = ['A wonderful world', 'Clean energy', 'Space energy', 'Carbon reduction'];
-  const dates = ['2022-12-12', '2023-12-12', '2024-12-12', '2025-12-12', '2026-12-12'];
+  const names = ["Wind energy turbine crowdfunding"];
+  const description = ['A wonderful world of green energy'];
+  const dates = ['2024-12-12'];
 
   const { disabled, onSubmitTransaction } =
     useSmartContractForms({

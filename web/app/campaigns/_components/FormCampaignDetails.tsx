@@ -108,7 +108,7 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
 
   return (
     <>
-      <br/>
+      <br />
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
         Campaign Details Page
       </h2>
@@ -143,50 +143,57 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
             disabled={erc20Disabled}
           />
         </div>
-        <br/>
-        
-        <div className="my-4 items-center lg:flex lg:gap-4">
-          <div className="text-center text-4xl lg:text-left">⭐️</div>
-          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">Project Detail</div>
-        </div>
-        <div>
-          <div className="mb-5">
-            <Label htmlFor="name">Name</Label>
-            <InputText
-              id="name"
-              placeholder={names[Math.floor(Math.random() * names.length)]}
-              disabled={!disabled}
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <Label htmlFor="name">Description</Label>
-            <InputText
-              id="description"
-              placeholder={description[Math.floor(Math.random() * description.length)]}
-              disabled={!disabled}
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <Label htmlFor="name">End date</Label>
-            <InputText
-              id="endDate"
-              placeholder={dates[Math.floor(Math.random() * dates.length)]}
-              disabled={!disabled}
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <Label htmlFor="targetFund">Target fund</Label>
-            <InputText
-              id="targetFund"
-              placeholder={address}
-              disabled={!disabled}
-            />
-          </div>
-        </div>
       </form>
+
+      <div className="my-4 items-center lg:flex lg:gap-4">
+        <div className="text-center text-4xl lg:text-left">⭐️</div>
+        <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">Project Detail</div>
+      </div>
+      <div>
+        <div className="mb-5">
+          <Label htmlFor="name">Name</Label>
+          <InputText
+            id="name"
+            placeholder={names[Math.floor(Math.random() * names.length)]}
+            disabled={!disabled}
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <Label htmlFor="name">Description</Label>
+          <InputText
+            id="description"
+            placeholder={description[Math.floor(Math.random() * description.length)]}
+            disabled={!disabled}
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <Label htmlFor="name">End date</Label>
+          <InputText
+            id="endDate"
+            placeholder={dates[Math.floor(Math.random() * dates.length)]}
+            disabled={!disabled}
+            required
+          />
+        </div>
+        <div className="mb-5">
+          <Label htmlFor="targetFund">Target fund</Label>
+          <InputText
+            id="targetFund"
+            placeholder={address}
+            disabled={!disabled}
+          />
+        </div>
+      </div>
+
+      <div className="my-4 items-center lg:flex lg:gap-4">
+        <div className="text-center text-4xl lg:text-left">🎖</div>
+        <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">Transaction</div>
+      </div>
+      <div>
+        
+      </div>
     </>
   );
 }

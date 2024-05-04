@@ -61,7 +61,7 @@ export default function CampaignsContractDemo() {
             'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
           ])}
         >
-          {/* <FormBuyCoffee refetchMemos={refetchMemos} /> */}
+          {/* <FormCreateCampaign refetchMemos={refetchMemos} /> */}
         </div>
       </aside>
     </div>

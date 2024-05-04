@@ -1,8 +1,11 @@
 import './global.css';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { getServerSession } from "next-auth";
 import GoogleAnalytics from '@/components/GoogleAnalytics/GoogleAnalytics';
 import OnchainProviders from '@/OnchainProviders';
 import { initAnalytics } from '@/utils/analytics';
+import SessionProvider from './components/SessionProvider';
 import { inter } from './fonts';
 import type { Metadata } from 'next';
 
@@ -25,12 +28,16 @@ initAnalytics();
 /** Root layout to define the structure of every page
  * https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts
  */
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const session = await getServerSession();
+
   return (
     <html lang="en" className={`${inter.className}`}>
-      <body className="flex flex-1 flex-col">
-        <OnchainProviders>{children}</OnchainProviders>
-      </body>
+      <SessionProvider session={session}>
+        <body className="flex flex-1 flex-col">
+          <OnchainProviders>{children}</OnchainProviders>
+        </body>
+      </SessionProvider>
       <GoogleAnalytics />
     </html>
   );

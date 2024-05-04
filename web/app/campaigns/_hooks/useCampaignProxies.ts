@@ -12,18 +12,17 @@ import { useZKGreenEnergyCrowdFundingFactory } from '../_contracts/useZKGreenEne
 function useCampaignProxies() {
   const contract = useZKGreenEnergyCrowdFundingFactory();
 
-//   markStep('useReadContract.refetchMemos');
+  //   markStep('useReadContract.refetchMemos');
   const contractReadResult = useReadContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
     functionName: 'getZkGreenEnergyCrowdFundingProxies',
   });
-//   markStep('useReadContract.refetchMemos');
+  //   markStep('useReadContract.refetchMemos');
 
   return useMemo(
     () => ({
-      campaignProxies:
-        contractReadResult.status === 'success' ? (contractReadResult.data) : [],
+      campaignProxies: contractReadResult.status === 'success' ? contractReadResult.data : [],
       refetchCampaignProxies: contractReadResult.refetch,
     }),
     [contractReadResult],

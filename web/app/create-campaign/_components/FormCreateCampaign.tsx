@@ -153,4 +153,4 @@ function FormCreateCampaign({ refetchMemos }: FormBuyCoffeeProps) {
   );
 }
 
-export default FormBuyCoffee;
+export default FormCreateCampaign;

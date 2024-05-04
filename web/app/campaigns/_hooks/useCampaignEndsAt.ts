@@ -2,9 +2,8 @@ import { useMemo } from 'react';
 import { useReadContract } from 'wagmi';
 import { useZKGreenEnergyCrowdFunding } from '../_contracts/useZKGreenEnergyCrowdFunding';
 
-
 function useCampaignEndsAt(address: `0x${string}`) {
-  const contract = useZKGreenEnergyCrowdFunding(address)
+  const contract = useZKGreenEnergyCrowdFunding(address);
 
   const contractReadResult = useReadContract({
     address: contract.status === 'ready' ? contract.address : undefined,
@@ -14,8 +13,7 @@ function useCampaignEndsAt(address: `0x${string}`) {
 
   return useMemo(
     () => ({
-      endsAt:
-        contractReadResult.status === 'success' ? (contractReadResult.data) : 0,
+      endsAt: contractReadResult.status === 'success' ? contractReadResult.data : 0,
       refetchEndsAt: contractReadResult.refetch,
     }),
     [contractReadResult],

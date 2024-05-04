@@ -1,339 +1,339 @@
 const abi = [
   {
-    "type": "constructor",
-    "inputs": [
+    type: 'constructor',
+    inputs: [
       {
-        "name": "implementation",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'implementation',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "stateMutability": "nonpayable"
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "deployCampaign",
-    "inputs": [
+    type: 'function',
+    name: 'deployCampaign',
+    inputs: [
       {
-        "name": "recipient",
-        "type": "address",
-        "internalType": "address"
+        name: 'recipient',
+        type: 'address',
+        internalType: 'address',
       },
       {
-        "name": "minGoal",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'minGoal',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "maxGoal",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'maxGoal',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "minContribution",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'minContribution',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "maxContribution",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'maxContribution',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "holdOff",
-        "type": "uint32",
-        "internalType": "uint32"
+        name: 'holdOff',
+        type: 'uint32',
+        internalType: 'uint32',
       },
       {
-        "name": "duration",
-        "type": "uint32",
-        "internalType": "uint32"
+        name: 'duration',
+        type: 'uint32',
+        internalType: 'uint32',
       },
       {
-        "name": "erc20TokenAddr",
-        "type": "address",
-        "internalType": "address"
+        name: 'erc20TokenAddr',
+        type: 'address',
+        internalType: 'address',
       },
       {
-        "name": "regulatoryComplianceScoreThreshold",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'regulatoryComplianceScoreThreshold',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "ipProtectionLevelThreshold",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'ipProtectionLevelThreshold',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "verifierContract",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'verifierContract',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [
+    outputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: '',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "stateMutability": "payable"
+    stateMutability: 'payable',
   },
   {
-    "type": "function",
-    "name": "feeSchedule",
-    "inputs": [],
-    "outputs": [
+    type: 'function',
+    name: 'feeSchedule',
+    inputs: [],
+    outputs: [
       {
-        "name": "collector",
-        "type": "address",
-        "internalType": "address"
+        name: 'collector',
+        type: 'address',
+        internalType: 'address',
       },
       {
-        "name": "transferFee",
-        "type": "uint16",
-        "internalType": "uint16"
+        name: 'transferFee',
+        type: 'uint16',
+        internalType: 'uint16',
       },
       {
-        "name": "yieldFee",
-        "type": "uint16",
-        "internalType": "uint16"
+        name: 'yieldFee',
+        type: 'uint16',
+        internalType: 'uint16',
       },
       {
-        "name": "deployFee",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: 'deployFee',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "getZkGreenEnergyCrowdFundingProxies",
-    "inputs": [],
-    "outputs": [
+    type: 'function',
+    name: 'getZkGreenEnergyCrowdFundingProxies',
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "address[]",
-        "internalType": "address[]"
-      }
+        name: '',
+        type: 'address[]',
+        internalType: 'address[]',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "owner",
-    "inputs": [],
-    "outputs": [
+    type: 'function',
+    name: 'owner',
+    inputs: [],
+    outputs: [
       {
-        "name": "",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: '',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "stateMutability": "view"
+    stateMutability: 'view',
   },
   {
-    "type": "function",
-    "name": "renounceOwnership",
-    "inputs": [],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    type: 'function',
+    name: 'renounceOwnership',
+    inputs: [],
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "transferDeployFees",
-    "inputs": [
+    type: 'function',
+    name: 'transferDeployFees',
+    inputs: [
       {
-        "name": "recipient",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'recipient',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "transferOwnership",
-    "inputs": [
+    type: 'function',
+    name: 'transferOwnership',
+    inputs: [
       {
-        "name": "newOwner",
-        "type": "address",
-        "internalType": "address"
-      }
+        name: 'newOwner',
+        type: 'address',
+        internalType: 'address',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "updateFeeSchedule",
-    "inputs": [
+    type: 'function',
+    name: 'updateFeeSchedule',
+    inputs: [
       {
-        "name": "feeCollector",
-        "type": "address",
-        "internalType": "address"
+        name: 'feeCollector',
+        type: 'address',
+        internalType: 'address',
       },
       {
-        "name": "feeTransferBips",
-        "type": "uint16",
-        "internalType": "uint16"
+        name: 'feeTransferBips',
+        type: 'uint16',
+        internalType: 'uint16',
       },
       {
-        "name": "feeYieldBips",
-        "type": "uint16",
-        "internalType": "uint16"
-      }
+        name: 'feeYieldBips',
+        type: 'uint16',
+        internalType: 'uint16',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "function",
-    "name": "updateMinimumDeployFee",
-    "inputs": [
+    type: 'function',
+    name: 'updateMinimumDeployFee',
+    inputs: [
       {
-        "name": "minFeeAmount",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
+        name: 'minFeeAmount',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
     ],
-    "outputs": [],
-    "stateMutability": "nonpayable"
+    outputs: [],
+    stateMutability: 'nonpayable',
   },
   {
-    "type": "event",
-    "name": "DeployFeeChange",
-    "inputs": [
+    type: 'event',
+    name: 'DeployFeeChange',
+    inputs: [
       {
-        "name": "fee",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: 'fee',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "DeployFeeTransfer",
-    "inputs": [
+    type: 'event',
+    name: 'DeployFeeTransfer',
+    inputs: [
       {
-        "name": "recipient",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: 'recipient',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
       },
       {
-        "name": "fee",
-        "type": "uint256",
-        "indexed": false,
-        "internalType": "uint256"
-      }
+        name: 'fee',
+        type: 'uint256',
+        indexed: false,
+        internalType: 'uint256',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "Deployment",
-    "inputs": [
+    type: 'event',
+    name: 'Deployment',
+    inputs: [
       {
-        "name": "deployment",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
-      }
+        name: 'deployment',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "FeeScheduleChange",
-    "inputs": [
+    type: 'event',
+    name: 'FeeScheduleChange',
+    inputs: [
       {
-        "name": "feeCollector",
-        "type": "address",
-        "indexed": false,
-        "internalType": "address"
+        name: 'feeCollector',
+        type: 'address',
+        indexed: false,
+        internalType: 'address',
       },
       {
-        "name": "upfrontBips",
-        "type": "uint16",
-        "indexed": false,
-        "internalType": "uint16"
+        name: 'upfrontBips',
+        type: 'uint16',
+        indexed: false,
+        internalType: 'uint16',
       },
       {
-        "name": "payoutBips",
-        "type": "uint16",
-        "indexed": false,
-        "internalType": "uint16"
-      }
+        name: 'payoutBips',
+        type: 'uint16',
+        indexed: false,
+        internalType: 'uint16',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "event",
-    "name": "OwnershipTransferred",
-    "inputs": [
+    type: 'event',
+    name: 'OwnershipTransferred',
+    inputs: [
       {
-        "name": "previousOwner",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
+        name: 'previousOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
       },
       {
-        "name": "newOwner",
-        "type": "address",
-        "indexed": true,
-        "internalType": "address"
-      }
+        name: 'newOwner',
+        type: 'address',
+        indexed: true,
+        internalType: 'address',
+      },
     ],
-    "anonymous": false
+    anonymous: false,
   },
   {
-    "type": "error",
-    "name": "FailedDeployment",
-    "inputs": []
+    type: 'error',
+    name: 'FailedDeployment',
+    inputs: [],
   },
   {
-    "type": "error",
-    "name": "InsufficientBalance",
-    "inputs": [
+    type: 'error',
+    name: 'InsufficientBalance',
+    inputs: [
       {
-        "name": "balance",
-        "type": "uint256",
-        "internalType": "uint256"
+        name: 'balance',
+        type: 'uint256',
+        internalType: 'uint256',
       },
       {
-        "name": "needed",
-        "type": "uint256",
-        "internalType": "uint256"
-      }
-    ]
+        name: 'needed',
+        type: 'uint256',
+        internalType: 'uint256',
+      },
+    ],
   },
   {
-    "type": "error",
-    "name": "OwnableInvalidOwner",
-    "inputs": [
+    type: 'error',
+    name: 'OwnableInvalidOwner',
+    inputs: [
       {
-        "name": "owner",
-        "type": "address",
-        "internalType": "address"
-      }
-    ]
+        name: 'owner',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
   },
   {
-    "type": "error",
-    "name": "OwnableUnauthorizedAccount",
-    "inputs": [
+    type: 'error',
+    name: 'OwnableUnauthorizedAccount',
+    inputs: [
       {
-        "name": "account",
-        "type": "address",
-        "internalType": "address"
-      }
-    ]
-  }
+        name: 'account',
+        type: 'address',
+        internalType: 'address',
+      },
+    ],
+  },
 ] as const;
 
 export default abi;

@@ -2,7 +2,7 @@ import CampaignCard from './CampaignCard';
 import type { Campaign } from './types';
 
 type CampaignProps = {
-  campaigns: Campaign[];
+  campaigns: (Campaign)[];
 };
 
 /**

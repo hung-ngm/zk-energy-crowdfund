@@ -14,7 +14,7 @@ export default function CampaignsContractDemo() {
   console.log(campaignProxies);
   
   const [client, setPublicClient] = useState<PublicClient | undefined>();
-  const [campaigns, setCampaigns] = useState<(Campaign | undefined)[]>([]);
+  const [campaigns, setCampaigns] = useState<Campaign[]>([]);
 
   useEffect(() => {
     const publicClient = createPublicClient({

@@ -75,8 +75,8 @@ contract ZKGreenEnergyCrowdFundingFactory is Ownable {
         uint32 holdOff,
         uint32 duration,
         address erc20TokenAddr,
-        uint256 regulatoryComplianceScoreThreshold,
-        uint256 ipProtectionLevelThreshold,
+        uint256 regulatoryComplianceScoreThreshold, // 5
+        uint256 ipProtectionLevelThreshold, // 
         address verifierContract
     ) external payable feeRequired returns (address) {
         address deployment = Clones.clone(_implementation);

@@ -62,6 +62,8 @@ export default function useSmartContractForms({
     (event: { preventDefault: () => void }) => {
       event.preventDefault();
 
+      console.log("contractRequest", contractRequest);
+
       const request = contractRequest?.request;
 
       if (request) {

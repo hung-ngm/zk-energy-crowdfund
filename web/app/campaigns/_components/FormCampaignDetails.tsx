@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 // import clsx from 'clsx';
 import { parseEther } from 'viem';
 import Button from '@/components/Button/Button';
+import { useERC20Token } from '../_contracts/useERC20Token';
 import { useZKGreenEnergyCrowdFunding } from '../_contracts/useZKGreenEnergyCrowdFunding';
 import useCampaignTotalSupply from '../_hooks/useCampaignTotalSupply';
 import useFields from '../_hooks/useFields';
@@ -12,7 +13,7 @@ import Label from './Label';
 import TransactionSteps from './TransactionSteps';
 import useSmartContractForms from './useSmartContractForms';
 
-const GAS_COST = 0.02;
+const GAS_COST = 0.01;
 
 const initFields = {
   amount: 0
@@ -27,48 +28,62 @@ type FormCampaignDetailsProps = {
   refetchTotalSupply: ReturnType<typeof useCampaignTotalSupply>['refetchTotalSupply'];
 };
 
-function FormCampaignDetails({ address, refetchTotalSupply }: FormCampaignDetailsProps) {
+function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
   const contract = useZKGreenEnergyCrowdFunding(address);
 
   console.log("contract", contract);
+
+  const erc20Contract = useERC20Token();
 
   const { fields, setField, resetFields } = useFields<Fields>(initFields);
 
   const reset = useCallback(async () => {
     resetFields();
-    await refetchTotalSupply();
-  }, [refetchTotalSupply, resetFields]);
+    // await refetchTotalSupply();
+  }, [resetFields]);
 
-  const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
-    useSmartContractForms({
+  const { 
+    disabled: erc20Disabled, 
+    transactionState: erc20TransactionState, 
+    resetContractForms: erc20ResetContractForms,
+    onSubmitTransaction: erc20OnSubmitTransaction
+  } = useSmartContractForms({
       gasFee: parseEther(String(GAS_COST)),
-      contract,
-      name: 'contributeERC20',
-      arguments: [fields.amount],
+      contract: erc20Contract,
+      name: 'approve',
+      arguments: [address, fields.amount],
       enableSubmit: true,
-      reset,
-    });
+      reset, 
+  })
 
-  console.log("disabled", disabled);
+  // const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
+  //   useSmartContractForms({
+  //     gasFee: parseEther(String(GAS_COST)),
+  //     contract: contract,
+  //     name: 'contributeERC20',
+  //     arguments: [fields.amount],
+  //     enableSubmit: true,
+  //     reset,
+  //   });
 
-  if (transactionState !== null) {
+  if (erc20TransactionState !== null) {
+    console.log("transactionState", erc20TransactionState)
     return (
       <TransactionSteps
-        transactionStep={transactionState}
+        transactionStep={erc20TransactionState}
         coffeeCount={10}
-        resetContractForms={resetContractForms}
+        resetContractForms={erc20ResetContractForms}
         gasCost={GAS_COST}
       />
     );
   }
-  console.log("transactionState", transactionState);
 
   return (
     <>
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
         Campaign Details Page
       </h2>
-      <form onSubmit={onSubmitTransaction} className="w-full">
+      <form onSubmit={erc20OnSubmitTransaction} className="w-full">
         <div className="my-4 items-center lg:flex lg:gap-4">
           <div className="text-center text-4xl lg:text-left">☕</div>
           <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
@@ -101,7 +116,7 @@ function FormCampaignDetails({ address, refetchTotalSupply }: FormCampaignDetail
               placeholder="amount"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('amount', Number(evt.target.value))}
-              disabled={disabled}
+              disabled={erc20Disabled}
               required
             />
           </div>
@@ -114,7 +129,7 @@ function FormCampaignDetails({ address, refetchTotalSupply }: FormCampaignDetail
               </>
             }
             type="submit"
-            disabled={disabled}
+            disabled={erc20Disabled}
           />
         </div>
       </form>

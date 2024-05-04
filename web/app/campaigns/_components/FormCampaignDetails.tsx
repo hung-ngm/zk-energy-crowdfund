@@ -10,7 +10,7 @@ import ContractAlert from './ContractAlert';
 import InputText from './InputText';
 import Label from './Label';
 // import TextArea from './TextArea';
-import TransactionSteps from './TransactionSteps';
+// import TransactionSteps from './TransactionSteps';
 import useSmartContractForms from './useSmartContractForms';
 
 const GAS_COST = 0;
@@ -45,7 +45,6 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
   const { 
     disabled: erc20Disabled, 
     transactionState: erc20TransactionState, 
-    resetContractForms: erc20ResetContractForms,
     onSubmitTransaction: erc20OnSubmitTransaction
   } = useSmartContractForms({
       gasFee: parseEther(String(0)),
@@ -56,7 +55,7 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
       reset, 
   })
 
-  const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
+  const { disabled, onSubmitTransaction } =
     useSmartContractForms({
       gasFee: parseEther(String(GAS_COST)),
       contract: contract,

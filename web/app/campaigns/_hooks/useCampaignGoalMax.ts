@@ -3,23 +3,23 @@ import { useReadContract } from 'wagmi';
 import { useZKGreenEnergyCrowdFunding } from '../_contracts/useZKGreenEnergyCrowdFunding';
 
 
-function useCampaignEndsAt(address: `0x${string}`) {
+function useCampaignGoalMax(address: `0x${string}`) {
   const contract = useZKGreenEnergyCrowdFunding(address)
 
   const contractReadResult = useReadContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
-    functionName: 'endsAt',
+    functionName: 'goalMax',
   });
 
   return useMemo(
     () => ({
-      endsAt:
+      goalMax:
         contractReadResult.status === 'success' ? (contractReadResult.data) : 0,
-      refetchEndsAt: contractReadResult.refetch,
+      refetchGoalMax: contractReadResult.refetch,
     }),
     [contractReadResult],
   );
 }
 
-export default useCampaignEndsAt;
+export default useCampaignGoalMax;

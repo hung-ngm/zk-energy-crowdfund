@@ -71,6 +71,9 @@ function Navbar() {
               <NavbarLink href="/#get-started">Get Started</NavbarLink>
             </li>
             <li className="flex">
+              <NavbarLink href="/campaigns">Campaigns</NavbarLink>
+            </li>
+            <li className="flex">
               <NavbarLink href="/create-campaign">Create Campaign</NavbarLink>
             </li>
             <li className="flex">

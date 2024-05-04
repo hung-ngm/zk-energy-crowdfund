@@ -13,7 +13,7 @@ import Label from './Label';
 import TransactionSteps from './TransactionSteps';
 import useSmartContractForms from './useSmartContractForms';
 
-const GAS_COST = 0.01;
+const GAS_COST = 0;
 
 const initFields = {
   amount: 0
@@ -48,7 +48,7 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
     resetContractForms: erc20ResetContractForms,
     onSubmitTransaction: erc20OnSubmitTransaction
   } = useSmartContractForms({
-      gasFee: parseEther(String(GAS_COST)),
+      gasFee: parseEther(String(0)),
       contract: erc20Contract,
       name: 'approve',
       arguments: [address, fields.amount],
@@ -56,25 +56,51 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
       reset, 
   })
 
-  // const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
-  //   useSmartContractForms({
-  //     gasFee: parseEther(String(GAS_COST)),
-  //     contract: contract,
-  //     name: 'contributeERC20',
-  //     arguments: [fields.amount],
-  //     enableSubmit: true,
-  //     reset,
-  //   });
+  const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
+    useSmartContractForms({
+      gasFee: parseEther(String(GAS_COST)),
+      contract: contract,
+      name: 'contributeERC20',
+      arguments: [fields.amount],
+      enableSubmit: true,
+      reset,
+    });
 
   if (erc20TransactionState !== null) {
-    console.log("transactionState", erc20TransactionState)
+    console.log("erc20TransactionState", erc20TransactionState)
     return (
-      <TransactionSteps
-        transactionStep={erc20TransactionState}
-        coffeeCount={10}
-        resetContractForms={erc20ResetContractForms}
-        gasCost={GAS_COST}
-      />
+      <form onSubmit={onSubmitTransaction} className="w-full">
+        <div className="my-4 items-center lg:flex lg:gap-4">
+          <div className="text-center text-4xl lg:text-left">☕</div>
+          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
+        </div>
+
+        <div>
+          <div className="mb-5">
+            <Label htmlFor="name">Contribute USDC/USDT to the project</Label>
+            <InputText
+              id="amount"
+              placeholder="amount"
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('amount', Number(evt.target.value))}
+              disabled={disabled}
+              required
+            />
+          </div>
+
+          <ContractAlert contract={contract} amount={GAS_COST} />
+          <Button
+            buttonContent={
+              <>
+                Contribute {String(fields.amount)} USDC to the project
+              </>
+            }
+            type="submit"
+            disabled={disabled}
+          />
+        </div>
+      </form>
+
     );
   }
 
@@ -83,34 +109,16 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
         Campaign Details Page
       </h2>
+      
       <form onSubmit={erc20OnSubmitTransaction} className="w-full">
         <div className="my-4 items-center lg:flex lg:gap-4">
           <div className="text-center text-4xl lg:text-left">☕</div>
           <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
-          <div className="mx-auto flex max-w-[300px] gap-3 lg:max-w-max">
-            {/* {COFFEE_COUNT.map((count) => (
-              <button
-                key={`num-coffee-btn-${count}`}
-                type="button"
-                className={clsx(
-                  `${
-                    fields.coffeeCount === count
-                      ? 'bg-gradient-2'
-                      : 'border border-boat-color-orange'
-                  } block h-[40px] w-full rounded lg:w-[40px]`,
-                )}
-                // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-                onClick={() => setField('coffeeCount', count)}
-              >
-                {count}
-              </button>
-            ))} */}
-          </div>
         </div>
 
         <div>
           <div className="mb-5">
-            <Label htmlFor="name">Contribute USDC/USDT to the project</Label>
+            <Label htmlFor="name">Approve USDC/USDT to contribute to the project</Label>
             <InputText
               id="amount"
               placeholder="amount"
@@ -125,7 +133,7 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
           <Button
             buttonContent={
               <>
-                Contribute {String(fields.amount)} USDC to the project
+                Approve {String(fields.amount)} USDC to contribute to the project
               </>
             }
             type="submit"
@@ -133,6 +141,8 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
           />
         </div>
       </form>
+      
+
     </>
   );
 }

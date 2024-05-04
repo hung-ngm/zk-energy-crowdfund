@@ -153,6 +153,7 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
         <div className="mb-5">
           <Label htmlFor="name">Name</Label>
           <InputText
+            onChange={(() => console.log("name"))}
             id="name"
             placeholder={names[Math.floor(Math.random() * names.length)]}
             disabled={!disabled}
@@ -160,8 +161,9 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
           />
         </div>
         <div className="mb-5">
-          <Label htmlFor="name">Description</Label>
+          <Label htmlFor="description">Description</Label>
           <InputText
+            onChange={(() => console.log("description"))}
             id="description"
             placeholder={description[Math.floor(Math.random() * description.length)]}
             disabled={!disabled}
@@ -169,8 +171,9 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
           />
         </div>
         <div className="mb-5">
-          <Label htmlFor="name">End date</Label>
+          <Label htmlFor="endDate">End date</Label>
           <InputText
+            onChange={(() => console.log("endDate"))}
             id="endDate"
             placeholder={dates[Math.floor(Math.random() * dates.length)]}
             disabled={!disabled}
@@ -180,19 +183,12 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
         <div className="mb-5">
           <Label htmlFor="targetFund">Target fund</Label>
           <InputText
+            onChange={(() => console.log("targetFund"))}
             id="targetFund"
             placeholder={address}
             disabled={!disabled}
           />
         </div>
-      </div>
-
-      <div className="my-4 items-center lg:flex lg:gap-4">
-        <div className="text-center text-4xl lg:text-left">🎖</div>
-        <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">Transaction</div>
-      </div>
-      <div>
-        
       </div>
     </>
   );

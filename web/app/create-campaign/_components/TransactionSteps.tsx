@@ -33,7 +33,7 @@ export default function TransactionSteps({
   if (transactionStep === TransactionStates.COMPLETE) {
     return (
       <TransactionStep
-        status={`You has successully create this campaign!`}
+        status='You has successully create this campaign!'
         icon="🎁"
         helpText="Thank you for supporting this endeavor!"
       >

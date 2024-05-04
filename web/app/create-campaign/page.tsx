@@ -1,23 +1,25 @@
+/* eslint-disable import/no-extraneous-dependencies */
 'use client';
 
 import { useEffect, useState } from 'react';
+import { redirect } from 'next/navigation';
+import { useSession } from "next-auth/react"
+import Button from '@/components/Button/Button';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
 import BuyMeCoffeeContractDemo from './_components/ContractDemo';
-
 /**
  * Use the page component to wrap the components
  * that you want to render on the page.
  */
 export default function CreateCampaign() {
   const [isMounted, setIsMounted] = useState(false);
-
+  const { data: session, status } = useSession({ required: true });
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  //  Fix hydration issues
   if (!isMounted) {
     return null;
   }
@@ -26,7 +28,16 @@ export default function CreateCampaign() {
     <>
       <Header />
       <Main>
-        <BuyMeCoffeeContractDemo />
+        {session ? (
+          <BuyMeCoffeeContractDemo />
+        ) : (
+          <div>
+            <p>
+              You need to sign in to create a campaign.
+            </p>
+            <Button onClick={() => redirect('/api/auth/signin')}>Sign in</Button>
+          </div>
+        )}
       </Main>
       <Footer />
     </>

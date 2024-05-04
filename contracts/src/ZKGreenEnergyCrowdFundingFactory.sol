@@ -38,6 +38,9 @@ contract ZKGreenEnergyCrowdFundingFactory is Ownable {
     /// @dev Fee to collect upon deployment
     uint256 private _feeDeployMin;
 
+    /// @dev List of all campaigns have deployed
+    address[] private _zkGreenEnergyCrowdFundingProxies;
+
     /**
      * @param implementation the CrowdFinancingV1 implementation address
      */
@@ -97,10 +100,18 @@ contract ZKGreenEnergyCrowdFundingFactory is Ownable {
             ipProtectionLevelThreshold,
             verifierContract
         );
-
+        _zkGreenEnergyCrowdFundingProxies.push(deployment);
         emit Deployment(deployment);
 
         return deployment;
+    }
+
+    /**
+     * 
+     * @dev Get all the deployment proxies
+     */
+    function getZkGreenEnergyCrowdFundingProxies() public view returns (address[] memory) {
+        return _zkGreenEnergyCrowdFundingProxies;
     }
 
     /**

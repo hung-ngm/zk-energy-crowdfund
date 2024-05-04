@@ -1,9 +1,7 @@
 import { clsx } from 'clsx';
-import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import FormCreateCampaign from './FormCreateCampaign';
 
 export default function BuyMeCoffeeContractDemo() {
-  const { refetchMemos } = useOnchainCoffeeMemos();
 
   return (
     <div className="flex min-h-screen items-center justify-center">
@@ -15,7 +13,7 @@ export default function BuyMeCoffeeContractDemo() {
         ])}
       >
         <br/>
-        <FormCreateCampaign refetchMemos={refetchMemos} />
+        <FormCreateCampaign />
       </div>
     </div>
   );

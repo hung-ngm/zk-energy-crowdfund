@@ -24,7 +24,7 @@ export default function HomeMain() {
             Smart Wallet and Account abstraction for gasless transactions.
           </ListItem>
           <ListItem>
-            Implement ZK circuit and smart contract to verify project's legitimacy without disclosing NDA data.
+            Implement ZK circuit and smart contract to verify project legitimacy without disclosing NDA data.
           </ListItem>
         </ul>
       </div>

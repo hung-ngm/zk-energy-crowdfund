@@ -5,6 +5,7 @@ import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
 import useCampaignEndsAt from '../_hooks/useCampaignEndsAt';
+import useCampaignGoalMax from '../_hooks/useCampaignGoalMax';
 
 /**
  * Use the page component to wrap the components
@@ -14,11 +15,13 @@ export default function CampaginDetailsPage({ params }: { params: { id: string }
   const [isMounted, setIsMounted] = useState(false);
 
   const address = params.id;
-  console.log(address);
+  console.log("address", address);
 
   const { endsAt } = useCampaignEndsAt(address as `0x${string}`);
-  console.log(endsAt);
+  console.log("endsAt", endsAt);
   
+  const { goalMax } = useCampaignGoalMax(address as `0x${string}`);
+  console.log("goalMax", goalMax);
 
   useEffect(() => {
     setIsMounted(true);

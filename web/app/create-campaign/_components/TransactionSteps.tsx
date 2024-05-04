@@ -17,7 +17,7 @@ export default function TransactionSteps({
   if (transactionStep === TransactionStates.START) {
     return (
       <TransactionStep
-        status="Coffee brewing..."
+        status="Creating campaign..."
         icon="☕"
         helpText="Please confirm transaction in your wallet"
       >
@@ -49,7 +49,7 @@ export default function TransactionSteps({
         icon="⛽"
         helpText={`Please fund your wallet with at least ${String(
           gasCost,
-        )} ETH and try sending a coffee again.`}
+        )} ETH and try creating a campaign again.`}
       >
         <Button buttonContent="Got it" onClick={resetContractForms} />
       </TransactionStep>

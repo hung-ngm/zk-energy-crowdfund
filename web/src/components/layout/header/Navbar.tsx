@@ -3,7 +3,6 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
 import AccountConnect from './AccountConnect';
-import { Experiences } from './Experiences';
 
 export function NavbarLink({
   href,
@@ -75,38 +74,6 @@ function Navbar() {
             </li>
             <li className="flex">
               <NavbarLink href="/create-campaign">Create Campaign</NavbarLink>
-            </li>
-            <li className="flex">
-              <NavigationMenu.Root className="relative">
-                <NavigationMenu.List className={clsx('flex flex-row space-x-2')}>
-                  <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className="group flex h-16 items-center justify-start gap-1">
-                      <span className="font-robotoMono text-center text-base font-normal text-white">
-                        Experiences
-                      </span>
-                      <ChevronDownIcon
-                        className="transform transition duration-200 ease-in-out group-data-[state=open]:rotate-180"
-                        width="16"
-                        height="16"
-                      />
-                    </NavigationMenu.Trigger>
-                    <NavigationMenu.Content
-                      className={clsx(
-                        'h-38 inline-flex w-48 flex-col items-start justify-start gap-6',
-                        'rounded-lg bg-neutral-900 p-6 shadow backdrop-blur-2xl',
-                      )}
-                    >
-                      <Experiences />
-                    </NavigationMenu.Content>
-                  </NavigationMenu.Item>
-                </NavigationMenu.List>
-                <NavigationMenu.Viewport
-                  className={clsx(
-                    'absolute flex justify-center',
-                    'left-[-20%] top-[100%] w-[140%]',
-                  )}
-                />
-              </NavigationMenu.Root>
             </li>
           </ul>
           <AccountConnect />

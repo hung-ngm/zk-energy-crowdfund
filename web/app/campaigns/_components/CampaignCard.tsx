@@ -1,13 +1,16 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react-perf/jsx-no-new-function-as-prop */
 import { Avatar, Name } from '@coinbase/onchainkit/identity';
 import { clsx } from 'clsx';
+import Link from 'next/link';
 import { convertBigIntTimestampToDate } from '@/utils/timestamp';
 import type { Campaign } from './types';
 
-function CampaignCard({ 
-  totalSupply, 
-  recipientAddress, 
-  name, 
-  description, 
+function CampaignCard({
+  totalSupply,
+  recipientAddress,
+  name,
+  description,
   goalMin,
   endsAt
 }: Campaign) {
@@ -27,6 +30,11 @@ function CampaignCard({
           <div className="inline-flex items-start gap-1 md:flex">
             <span className="text-3 text-bold truncate text-wrap font-bold text-boat-color-palette-foreground">
               <Name address={recipientAddress} />
+            </span>
+            <span>
+              <Link href={`/campaigns/${recipientAddress}`}>
+                View
+              </Link>
             </span>
             <span className="text-3 line-clamp-1 flex-1 truncate text-wrap break-all font-normal text-boat-color-palette-foregroundmuted">
               {name}

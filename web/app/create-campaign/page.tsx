@@ -2,9 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { redirect } from 'next/navigation';
 import { useSession } from "next-auth/react"
-import Button from '@/components/Button/Button';
 import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Main from '@/components/layout/Main';
@@ -15,7 +13,7 @@ import BuyMeCoffeeContractDemo from './_components/ContractDemo';
  */
 export default function CreateCampaign() {
   const [isMounted, setIsMounted] = useState(false);
-  const { data: session, status } = useSession({ required: true });
+  const { data: session } = useSession({ required: true });
   useEffect(() => {
     setIsMounted(true);
   }, []);

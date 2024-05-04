@@ -9,7 +9,7 @@ import { useZKGreenEnergyCrowdFundingFactory } from '../_contracts/useZKGreenEne
  * offers a refetch function to refetch the data.
  * @returns The memos and a function to refetch them.
  */
-function useOnchainZKEnergyCrowdFundingFactory() {
+function useCampaignProxies() {
   const contract = useZKGreenEnergyCrowdFundingFactory();
 
 //   markStep('useReadContract.refetchMemos');
@@ -30,4 +30,4 @@ function useOnchainZKEnergyCrowdFundingFactory() {
   );
 }
 
-export default useOnchainZKEnergyCrowdFundingFactory
+export default useCampaignProxies;

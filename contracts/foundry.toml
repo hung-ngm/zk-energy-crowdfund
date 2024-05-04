@@ -5,7 +5,7 @@ test = "test"
 libs = ["lib"]
 fs_permissions = [{ access = "read", path = "./" }]
 solc = "0.8.25"
-evm_version = 'cancun'
+# evm_version = 'cancun'
 
 [rpc_endpoints]
 base = "https://mainnet.base.org"

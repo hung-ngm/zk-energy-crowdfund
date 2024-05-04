@@ -31,12 +31,7 @@ export default function CreateCampaign() {
         {session ? (
           <BuyMeCoffeeContractDemo />
         ) : (
-          <div>
-            <p>
-              You need to sign in to create a campaign.
-            </p>
-            <Button onClick={() => redirect('/api/auth/signin')}>Sign in</Button>
-          </div>
+          <p>You need to verify to view this page</p>
         )}
       </Main>
       <Footer />

@@ -116,7 +116,7 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
       <form onSubmit={erc20OnSubmitTransaction} className="w-full">
         <div className="my-4 items-center lg:flex lg:gap-4">
           <div className="text-center text-4xl lg:text-left">☕</div>
-          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
+          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">Contribute</div>
         </div>
 
         <div>
@@ -144,8 +144,11 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
           />
         </div>
         <br/>
-        <p>Event detail</p>
-        <br/>
+        
+        <div className="my-4 items-center lg:flex lg:gap-4">
+          <div className="text-center text-4xl lg:text-left">⭐️</div>
+          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">Project Detail</div>
+        </div>
         <div>
           <div className="mb-5">
             <Label htmlFor="name">Name</Label>

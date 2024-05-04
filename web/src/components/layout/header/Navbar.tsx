@@ -1,5 +1,4 @@
-import { ChevronDownIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import { GitHubLogoIcon } from '@radix-ui/react-icons';
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
 import AccountConnect from './AccountConnect';
@@ -65,9 +64,6 @@ function Navbar() {
                   aria-label="build-onchain-apps Github respository"
                 />
               </NavbarLink>
-            </li>
-            <li className="flex">
-              <NavbarLink href="/#get-started">Get Started</NavbarLink>
             </li>
             <li className="flex">
               <NavbarLink href="/campaigns">Campaigns</NavbarLink>

@@ -5,14 +5,12 @@ import { TransactionStates } from './useSmartContractForms';
 
 type TransactionStepsProps = {
   transactionStep: TransactionStates | null;
-  coffeeCount: number;
   gasCost: number;
   resetContractForms: () => void;
 };
 
 export default function TransactionSteps({
   transactionStep,
-  coffeeCount,
   resetContractForms: resetContractForms,
   gasCost,
 }: TransactionStepsProps) {
@@ -35,11 +33,11 @@ export default function TransactionSteps({
   if (transactionStep === TransactionStates.COMPLETE) {
     return (
       <TransactionStep
-        status={`You bought ${coffeeCount} coffee${coffeeCount > 1 ? 's' : ''}!`}
+        status={`You has successully create this campaign!`}
         icon="🎁"
         helpText="Thank you for supporting this endeavor!"
       >
-        <Button buttonContent="Send another coffee" onClick={resetContractForms} />
+        <Button buttonContent="Create another campaign" onClick={resetContractForms} />
       </TransactionStep>
     );
   }

@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
-import FormBuyCoffee from './FormBuyCoffee';
+import FormCreateCampaign from './FormCreateCampaign';
 import Memos from './Memos';
 
 export default function BuyMeCoffeeContractDemo() {
@@ -30,7 +30,7 @@ export default function BuyMeCoffeeContractDemo() {
             'bg-boat-color-palette-backgroundalternate p-10 md:mt-0',
           ])}
         >
-          <FormBuyCoffee refetchMemos={refetchMemos} />
+          <FormCreateCampaign refetchMemos={refetchMemos} />
         </div>
       </aside>
     </div>

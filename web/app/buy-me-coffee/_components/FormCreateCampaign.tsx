@@ -29,11 +29,11 @@ type Fields = {
   message: string;
 };
 
-type FormBuyCoffeeProps = {
+type FormCreateCampaignProps = {
   refetchMemos: ReturnType<typeof useOnchainCoffeeMemos>['refetchMemos'];
 };
 
-function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
+function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
   const contract = useBuyMeACoffeeContract();
 
   const { fields, setField, resetFields } = useFields<Fields>(initFields);
@@ -47,7 +47,7 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
     useSmartContractForms({
       gasFee: parseEther(String(GAS_COST * fields.coffeeCount)),
       contract,
-      name: 'buyCoffee',
+      name: 'deployCampaign',
       arguments: [fields.coffeeCount, fields.name, fields.twitterHandle, fields.message],
       enableSubmit: fields.name !== '' && fields.message !== '',
       reset,
@@ -149,4 +149,4 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
   );
 }
 
-export default FormBuyCoffee;
+export default FormCreateCampaign;

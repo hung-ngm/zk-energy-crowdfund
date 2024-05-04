@@ -1,18 +1,18 @@
 import { useCallback } from 'react';
-import clsx from 'clsx';
+// import clsx from 'clsx';
 import { parseEther } from 'viem';
 import Button from '@/components/Button/Button';
 import { useZKGreenEnergyCrowdFunding } from '../_contracts/useZKGreenEnergyCrowdFunding';
+import useCampaignTotalSupply from '../_hooks/useCampaignTotalSupply';
 import useFields from '../_hooks/useFields';
 import ContractAlert from './ContractAlert';
 import InputText from './InputText';
 import Label from './Label';
-import TextArea from './TextArea';
+// import TextArea from './TextArea';
 import TransactionSteps from './TransactionSteps';
 import useSmartContractForms from './useSmartContractForms';
 
-const GAS_COST = 0.0001;
-const COFFEE_COUNT = [1, 2, 3, 4];
+const GAS_COST = 0.02;
 
 const initFields = {
   amount: 0
@@ -23,19 +23,21 @@ type Fields = {
 };
 
 type FormCampaignDetailsProps = {
-  address: `0x${string}`
-  // refetchMemos: ReturnType<typeof useOnchainCoffeeMemos>['refetchMemos'];
+  address: `0x${string}`,
+  refetchTotalSupply: ReturnType<typeof useCampaignTotalSupply>['refetchTotalSupply'];
 };
 
-function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
+function FormCampaignDetails({ address, refetchTotalSupply }: FormCampaignDetailsProps) {
   const contract = useZKGreenEnergyCrowdFunding(address);
+
+  console.log("contract", contract);
 
   const { fields, setField, resetFields } = useFields<Fields>(initFields);
 
   const reset = useCallback(async () => {
     resetFields();
-    // await refetchMemos();
-  }, [refetchMemos, resetFields]);
+    await refetchTotalSupply();
+  }, [refetchTotalSupply, resetFields]);
 
   const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
     useSmartContractForms({
@@ -47,21 +49,24 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
       reset,
     });
 
+  console.log("disabled", disabled);
+
   if (transactionState !== null) {
     return (
       <TransactionSteps
         transactionStep={transactionState}
-        coffeeCount={fields.coffeeCount}
+        coffeeCount={10}
         resetContractForms={resetContractForms}
         gasCost={GAS_COST}
       />
     );
   }
+  console.log("transactionState", transactionState);
 
   return (
     <>
       <h2 className="mb-5 w-full text-center text-2xl font-semibold text-white lg:text-left">
-        Buy Me a Coffee!
+        Campaign Details Page
       </h2>
       <form onSubmit={onSubmitTransaction} className="w-full">
         <div className="my-4 items-center lg:flex lg:gap-4">

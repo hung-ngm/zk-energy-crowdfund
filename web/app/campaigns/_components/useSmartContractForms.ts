@@ -31,6 +31,7 @@ export default function useSmartContractForms({
 
   const canAfford = useLoggedInUserCanAfford(gasFee);
 
+
   const { data: contractRequest } = useSimulateContract({
     address: contract.status === 'ready' ? contract.address : undefined,
     abi: contract.abi,
@@ -41,6 +42,7 @@ export default function useSmartContractForms({
     },
     value: gasFee,
   });
+
 
   const {
     writeContract,
@@ -60,7 +62,9 @@ export default function useSmartContractForms({
 
   const onSubmitTransaction = useCallback(
     (event: { preventDefault: () => void }) => {
+      
       event.preventDefault();
+      console.log("contractRequest", contractRequest);
 
       const request = contractRequest?.request;
 

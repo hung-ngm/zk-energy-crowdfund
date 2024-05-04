@@ -57,10 +57,14 @@ export default function useSmartContractForms({
   });
 
   const disabled = contract.status !== 'ready' || writeContractStatus === 'pending' || !canAfford;
+  console.log("disabled", disabled);
 
   const onSubmitTransaction = useCallback(
     (event: { preventDefault: () => void }) => {
       event.preventDefault();
+      console.log("event", event);
+
+      console.log("contractRequest", contractRequest);
 
       const request = contractRequest?.request;
 

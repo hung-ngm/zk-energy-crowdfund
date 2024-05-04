@@ -13,7 +13,7 @@ import BuyMeCoffeeContractDemo from './_components/ContractDemo';
  */
 export default function CreateCampaign() {
   const [isMounted, setIsMounted] = useState(false);
-  const { data: session } = useSession({ required: true });
+  // const { data: session } = useSession({ required: true });
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -26,7 +26,7 @@ export default function CreateCampaign() {
     <>
       <Header />
       <Main>
-        {session ? (
+        {true ? (
           <BuyMeCoffeeContractDemo />
         ) : (
           <p>You need to verify to view this page</p>

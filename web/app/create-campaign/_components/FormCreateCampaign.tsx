@@ -1,9 +1,9 @@
 import { useCallback } from 'react';
 import { parseEther } from 'viem';
 import Button from '@/components/Button/Button';
-import { useBuyMeACoffeeContract } from '../_contracts/useBuyMeACoffeeContract';
+import { useZKGreenEnergyCrowdFundingFactory } from '../_contracts/useZKGreenEnergyCrowdFundingFactory';
 import useFields from '../_hooks/useFields';
-import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
+// import useOnchainCoffeeMemos from '../_hooks/useOnchainCoffeeMemos';
 import ContractAlert from './ContractAlert';
 import InputText from './InputText';
 import Label from './Label';
@@ -11,7 +11,7 @@ import TextArea from './TextArea';
 import TransactionSteps from './TransactionSteps';
 import useSmartContractForms from './useSmartContractForms';
 
-const GAS_COST = 0.0001;
+const GAS_COST = 0.05;
 
 
 const initFields = {
@@ -45,18 +45,18 @@ type Fields = {
 };
 
 type FormCreateCampaignProps = {
-  refetchMemos: ReturnType<typeof useOnchainCoffeeMemos>['refetchMemos'];
+  // refetchMemos: ReturnType<typeof useOnchainCoffeeMemos>['refetchMemos'];
 };
 
-function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
-  const contract = useBuyMeACoffeeContract();
+function FormCreateCampaign({  }: FormCreateCampaignProps) {
+  const contract = useZKGreenEnergyCrowdFundingFactory();
 
   const { fields, setField, resetFields } = useFields<Fields>(initFields);
 
   const reset = useCallback(async () => {
     resetFields();
-    await refetchMemos();
-  }, [refetchMemos, resetFields]);
+    // await refetchMemos();
+  }, [resetFields]);
 
   const { disabled, transactionState, resetContractForms, onSubmitTransaction } =
     useSmartContractForms({
@@ -64,9 +64,11 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
       contract,
       name: 'deployCampaign',
       arguments: [fields.recipient, fields.minGoal, fields.maxGoal, fields.minContribution, fields.maxContribution, fields.holdOff, fields.duration, "0x7C65d5C1497472B5Dd0434D681FBe619935D1fF4", 85, 4,"0x56C1a83A4682837528b04292AF27ef648aC6dDab"],
-      enableSubmit: fields.name !== '' && fields.message !== '',
+      // arguments: ["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", 100000000000, 100000000000000000, 1, 1000000000, 0, 5000000, "0x7C65d5C1497472B5Dd0434D681FBe619935D1fF4", 85, 4, "0x56C1a83A4682837528b04292AF27ef648aC6dDab"],
+      enableSubmit: true,
       reset,
     });
+  
 
   if (transactionState !== null) {
     return (
@@ -92,7 +94,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               placeholder="Name"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('name', evt.target.value)}
-              disabled={!disabled}
+              disabled={disabled}
               required
             />
           </div>
@@ -104,7 +106,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               placeholder="Minimum Goal"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('minGoal', Number(evt.target.value))}
-              disabled={!disabled}
+              disabled={disabled}
               required
             />
           </div>
@@ -116,7 +118,31 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               placeholder="Maximum Goal"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('maxGoal', Number(evt.target.value))}
-              disabled={!disabled}
+              disabled={disabled}
+              required
+            />
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="name">Minimum Contribution</Label>
+            <InputText
+              id="goal"
+              placeholder="Minimum Contribution"
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('minContribution', Number(evt.target.value))}
+              disabled={disabled}
+              required
+            />
+          </div>
+
+          <div className="mb-5">
+            <Label htmlFor="name">Maximum Contribution</Label>
+            <InputText
+              id="goal"
+              placeholder="Maximum Contribution"
+              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+              onChange={(evt) => setField('maxContribution', Number(evt.target.value))}
+              disabled={disabled}
               required
             />
           </div>
@@ -128,7 +154,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               placeholder="Description"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('description', evt.target.value)}
-              disabled={!disabled}
+              disabled={disabled}
               required
             />
           </div>
@@ -142,7 +168,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               onChange={(evt) => {
                 setField('twitterHandle', evt.target.value);
               }}
-              disabled={!disabled}
+              disabled={disabled}
             />
           </div>
 
@@ -153,7 +179,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               placeholder="Message"
               // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
               onChange={(evt) => setField('message', evt.target.value)}
-              disabled={!disabled}
+              disabled={disabled}
               required
             />
 
@@ -164,7 +190,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
                 placeholder="holdOff"
                 // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
                 onChange={(evt) => setField('holdOff', Number(evt.target.value))}
-                disabled={!disabled}
+                disabled={disabled}
                 required
               />
           </div>
@@ -174,14 +200,14 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               <select
                 id="duration"
                 onChange={(evt) => setField('duration', Number(evt.target.value))}
-                disabled={!disabled}
+                disabled={disabled}
                 required
               >
                 <option value={0}>Select duration</option>
-                <option value={1}>1 hour</option>
-                <option value={24}>1 day</option>
-                <option value={168}>1 week</option>
-                <option value={720}>1 month</option>
+                <option value={3600}>1 hour</option>
+                <option value={86400}>1 day</option>
+                <option value={604800}>1 week</option>
+                <option value={2629800}>1 month</option>
               </select>
             </div>
           </div>
@@ -191,7 +217,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
             <select
               id="token"
               onChange={(evt) => setField('token', evt.target.value)}
-              disabled={!disabled}
+              disabled={disabled}
               required
             >
               <option value="">Select token</option>
@@ -206,7 +232,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               id="recipient"
               placeholder="Contract address"
               onChange={(evt) => setField('recipient', evt.target.value)}
-              disabled={!disabled}
+              disabled={disabled}
               required
             />
           </div>
@@ -220,7 +246,7 @@ function FormCreateCampaign({ refetchMemos }: FormCreateCampaignProps) {
               </>
             }
             type="submit"
-            disabled={!disabled}
+            disabled={disabled}
           />
         </div>
       </form>

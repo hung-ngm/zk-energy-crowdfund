@@ -14,6 +14,7 @@ export default function BuyMeCoffeeContractDemo() {
           'bg-boat-color-palette-backgroundalternate p-10', // Adjust the left margin
         ])}
       >
+        <br/>
         <FormCreateCampaign refetchMemos={refetchMemos} />
       </div>
     </div>

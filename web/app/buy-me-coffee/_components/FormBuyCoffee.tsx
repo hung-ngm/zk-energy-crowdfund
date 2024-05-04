@@ -133,7 +133,6 @@ function FormBuyCoffee({ refetchMemos }: FormBuyCoffeeProps) {
           </div>
 
           <ContractAlert contract={contract} amount={GAS_COST} />
-
           <Button
             buttonContent={
               <>

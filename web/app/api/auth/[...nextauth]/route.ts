@@ -2,7 +2,8 @@
 import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+// Keeping authOptions inside the module if it's not used elsewhere
+const authOptions: NextAuthOptions = {
   providers: [
     {
       id: "worldcoin",
@@ -34,4 +35,5 @@ export const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions);
 
+// Properly exporting the handler for GET and POST HTTP methods
 export { handler as GET, handler as POST };

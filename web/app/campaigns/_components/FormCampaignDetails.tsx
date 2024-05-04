@@ -73,36 +73,83 @@ function FormCampaignDetails({ address }: FormCampaignDetailsProps) {
   if (erc20TransactionState !== null) {
     console.log("erc20TransactionState", erc20TransactionState)
     return (
-      <form onSubmit={onSubmitTransaction} className="w-full">
+      <>
+        <form onSubmit={onSubmitTransaction} className="w-full">
+          <div className="my-4 items-center lg:flex lg:gap-4">
+            <div className="text-center text-4xl lg:text-left">☕</div>
+            <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
+          </div>
+          <div>
+            <div className="mb-5">
+              <Label htmlFor="name">Contribute USDC/USDT to the project</Label>
+              <InputText
+                id="amount"
+                placeholder="amount"
+                // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
+                onChange={(evt) => setField('amount', Number(evt.target.value))}
+                disabled={disabled}
+                required
+              />
+            </div>
+
+            <ContractAlert contract={contract} amount={GAS_COST} />
+            <Button
+              buttonContent={
+                <>
+                  Contribute {String(fields.amount)} USDC to the project
+                </>
+              }
+              type="submit"
+              disabled={disabled}
+            />
+          </div>
+        </form>
         <div className="my-4 items-center lg:flex lg:gap-4">
-          <div className="text-center text-4xl lg:text-left">☕</div>
-          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">X</div>
+          <div className="text-center text-4xl lg:text-left">⭐️</div>
+          <div className="mb-4 mt-2 text-center font-sans text-xl lg:my-0 lg:text-left">Project Detail</div>
         </div>
         <div>
           <div className="mb-5">
-            <Label htmlFor="name">Contribute USDC/USDT to the project</Label>
+            <Label htmlFor="name">Name</Label>
             <InputText
-              id="amount"
-              placeholder="amount"
-              // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
-              onChange={(evt) => setField('amount', Number(evt.target.value))}
-              disabled={disabled}
+              onChange={(() => console.log("name"))}
+              id="name"
+              placeholder={names[Math.floor(Math.random() * names.length)]}
+              disabled={!disabled}
               required
             />
           </div>
-
-          <ContractAlert contract={contract} amount={GAS_COST} />
-          <Button
-            buttonContent={
-              <>
-                Contribute {String(fields.amount)} USDC to the project
-              </>
-            }
-            type="submit"
-            disabled={disabled}
-          />
+          <div className="mb-5">
+            <Label htmlFor="description">Description</Label>
+            <InputText
+              onChange={(() => console.log("description"))}
+              id="description"
+              placeholder={description[Math.floor(Math.random() * description.length)]}
+              disabled={!disabled}
+              required
+            />
+          </div>
+          <div className="mb-5">
+            <Label htmlFor="endDate">End date</Label>
+            <InputText
+              onChange={(() => console.log("endDate"))}
+              id="endDate"
+              placeholder={dates[Math.floor(Math.random() * dates.length)]}
+              disabled={!disabled}
+              required
+            />
+          </div>
+          <div className="mb-5">
+            <Label htmlFor="targetFund">Target fund</Label>
+            <InputText
+              onChange={(() => console.log("targetFund"))}
+              id="targetFund"
+              placeholder={address}
+              disabled={!disabled}
+            />
+          </div>
         </div>
-      </form>
+      </>
     );
   }
 

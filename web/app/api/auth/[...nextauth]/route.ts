@@ -2,7 +2,6 @@
 import NextAuth from "next-auth";
 import type { NextAuthOptions } from "next-auth";
 
-// Keeping authOptions inside the module if it's not used elsewhere
 const authOptions: NextAuthOptions = {
   providers: [
     {
